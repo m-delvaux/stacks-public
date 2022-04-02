@@ -1,32 +1,32 @@
 google_config = lambda callback_url, client_id, client_secret: [
     f"from oauthenticator.google import LocalGoogleOAuthenticator",
-    f"c.LocalGoogleOAuthenticator.create_system_users = True",
     f"c.LocalGoogleOAuthenticator.oauth_callback_url = '{callback_url}'",
     f"c.LocalGoogleOAuthenticator.client_id = '{client_id}'",
     f"c.LocalGoogleOAuthenticator.client_secret = '{client_secret}'",
-    f"c.Authenticator.add_user_cmd = ['adduser', '-q', '--gecos', '\"\"', '--disabled-password', '--force-badname']",
-    "c.JupyterHub.authenticator_class = LocalGoogleOAuthenticator"
+    "c.JupyterHub.authenticator_class = LocalGoogleOAuthenticator",
+    f"c.LocalAuthenticator.create_system_users = True",
+    f"c.LocalAuthenticator.add_user_cmd = ['adduser', '-q', '--gecos', '\"\"', '--disabled-password', '--force-badname']"
                                                                ]
 
 auth0_config = lambda callback_url, client_id, client_secret: [
-    f"from oauthenticator.auth0 import Auth0OAuthenticator, LocalAuth0OAuthenticator",
-    f"c.LocalAuthenticator.create_system_users = True",
+    f"from oauthenticator.auth0 import Auth0OAuthenticator",
     f"c.Auth0OAuthenticator.oauth_callback_url = '{callback_url}'",
     f"c.Auth0OAuthenticator.client_id = '{client_id}'",
     f"c.Auth0OAuthenticator.client_secret = '{client_secret}'",    
     f"c.Auth0OAuthenticator.scope = ['openid', 'email']",
-    f"c.Authenticator.add_user_cmd = ['adduser', '-q', '--gecos', '\"\"', '--disabled-password', '--force-badname']",
-    f"c.JupyterHub.authenticator_class = LocalAuth0OAuthenticator"
+    f"c.JupyterHub.authenticator_class = Auth0OAuthenticator",
+    f"c.LocalAuthenticator.add_user_cmd = ['adduser', '-q', '--gecos', '\"\"', '--disabled-password', '--force-badname']",
+    f"c.LocalAuthenticator.create_system_users = True"    
     ]
 
 github_config = lambda callback_url, client_id, client_secret: [
-    f"from oauthenticator.github import LocalGitHubOAuthenticator",
-    f"c.LocalAuthenticator.create_system_users = True",
+    f"from oauthenticator.github import GitHubOAuthenticator",
     f"c.GitHubOAuthenticator.oauth_callback_url = '{callback_url}'",
     f"c.GitHubOAuthenticator.client_id = '{client_id}'",
     f"c.GitHubOAuthenticator.client_secret = '{client_secret}'",    
-    f"c.Authenticator.add_user_cmd = ['adduser', '-q', '--gecos', '\"\"', '--disabled-password', '--force-badname']",
-    f"c.JupyterHub.authenticator_class = LocalGitHubOAuthenticator"
+    f"c.JupyterHub.authenticator_class = GitHubOAuthenticator",
+    f"c.LocalAuthenticator.add_user_cmd = ['adduser', '-q', '--gecos', '\"\"', '--disabled-password', '--force-badname']",
+    f"c.LocalAuthenticator.create_system_users = True"
     
 ]
 
