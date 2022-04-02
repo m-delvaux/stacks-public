@@ -27,7 +27,6 @@ from typing import Optional
 
 from cachelib.file import FileSystemCache
 from celery.schedules import crontab
-from flask_appbuilder.security.manager import AUTH_OID, AUTH_REMOTE_USER, AUTH_DB, AUTH_LDAP, AUTH_OAUTH
 
 logger = logging.getLogger()
 
@@ -73,7 +72,7 @@ RESULTS_BACKEND = FileSystemCache("/app/superset_home/sqllab")
 
 class CeleryConfig(object):
     BROKER_URL = f"redis://{REDIS_HOST}:{REDIS_PORT}/{REDIS_CELERY_DB}"
-    CELERY_IMPORTS = ("superset.sql_lab", "superset.tasks")
+    CELERY_IMPORTS = ("superset.sql_lab",)
     CELERY_RESULT_BACKEND = f"redis://{REDIS_HOST}:{REDIS_PORT}/{REDIS_RESULTS_DB}"
     CELERYD_LOG_LEVEL = "DEBUG"
     CELERYD_PREFETCH_MULTIPLIER = 1
@@ -113,31 +112,3 @@ try:
     )
 except ImportError:
     logger.info("Using default Docker config...")
-
-
-superset_oauth_enabled = os.getenv('GOOGLE_OAUTH_ENABLED')
-superset_oauth_key = os.getenv('GOOGLE_OAUTH_KEY')
-superset_oauth_secret = os.getenv('GOOGLE_OAUTH_SECRET')
-
-if(superset_oauth_enabled and superset_oauth_enabled=="true"):
-    AUTH_TYPE = AUTH_OAUTH
-    AUTH_USER_REGISTRATION = True
-    AUTH_USER_REGISTRATION_ROLE = 'Admin'
-    OAUTH_PROVIDERS = [
-        {
-            'name': 'google',
-            'icon': 'fa-google',
-            'token_key': 'access_token',
-            'remote_app': {
-                'client_id': superset_oauth_key,
-                'client_secret': superset_oauth_secret,
-                'api_base_url': 'https://www.googleapis.com/oauth2/v2/',
-                'client_kwargs':{
-                  'scope': 'email profile'
-                },
-                'request_token_url': None,
-                'access_token_url': 'https://accounts.google.com/o/oauth2/token',
-                'authorize_url': 'https://accounts.google.com/o/oauth2/auth'
-            }
-        }
-    ]
