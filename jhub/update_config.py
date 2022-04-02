@@ -24,13 +24,13 @@ github_config = lambda env_var: [
 def auth0_config(env_var):
     assert "jhub_auth0_subdomain" in env_var.keys(), "Missing 'JHUB_AUTH0_SUBDOMAIN' environment variable'"
     return [
-        f"from oauthenticator.auth0 import Auth0OAuthenticator",
+        f"from oauthenticator.auth0 import Auth0OAuthenticator, LocalAuth0OAuthenticator",
         f"c.Auth0OAuthenticator.auth0_subdomain = '{env_var['jhub_auth0_subdomain']}'",
         f"c.Auth0OAuthenticator.oauth_callback_url = '{clean_base_path(env_var['jhub_base_domain_url'])+'/hub/oauth_callback'}'",
         f"c.Auth0OAuthenticator.client_id = '{env_var['jhub_client_id']}'",
         f"c.Auth0OAuthenticator.client_secret = '{env_var['jhub_client_secret']}'",    
         f"c.Auth0OAuthenticator.scope = ['openid', 'email']",
-        f"c.JupyterHub.authenticator_class = Auth0OAuthenticator",
+        f"c.JupyterHub.authenticator_class = LocalAuth0OAuthenticator",
         f"c.LocalAuthenticator.add_user_cmd = ['adduser', '-q', '--gecos', '\"\"', '--disabled-password', '--force-badname']",
         f"c.LocalAuthenticator.create_system_users = True"    
     ]
