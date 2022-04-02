@@ -8,4 +8,4 @@ apt-get install -yq nodejs;
 echo "SKEL=/etc/skel" >> /etc/default/useradd && mkdir -p /home/shared && ln -sf /home/shared /etc/skel/shared;
 
 # Update jupyter_config.py
-#python /git/jhub/update_config.py;
+python3 /git/jhub/update_config.py;

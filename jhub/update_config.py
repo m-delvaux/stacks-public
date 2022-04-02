@@ -38,7 +38,7 @@ providers_config = {
 
 
 import os
-env_var = {k.lower():v for k, v in dict(os.environ).items()}
+env_var = {k.lower():v for k, v in dict(os.environ).items() if v!=''}
 
 if("jhub_oauth_provider" in env_var.keys()):
     assert env_var["jhub_oauth_provider"].lower() in providers_config.keys(), f"Provider {env_var['jhub_oauth_provider']} not supported {', '.join(providers_config.keys())} only"
