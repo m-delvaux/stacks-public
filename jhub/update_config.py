@@ -46,12 +46,12 @@ if("jhub_oauth_provider" in env_var.keys()):
     assert "jhub_client_id" in env_var.keys(), "Missing 'JHUB_CLIENT_ID' environment variable'"
     assert "jhub_client_secret" in env_var.keys(), "Missing 'JHUB_CLIENT_SECRET' environment variable'"
     
-    jhub_config = open("jupyterhub_raw.py","r").read()
+    jhub_config = open("/git/jhub/jupyterhub_raw.py","r").read()
     
     callback_url, client_id, client_secret = env_var["jhub_callback_url"], env_var["jhub_client_id"], env_var["jhub_client_secret"]
     addl_config = providers_config[env_var["jhub_oauth_provider"].lower()](callback_url, client_id, client_secret)
 
-    with open("jupyterhub_config.py", "w") as fw:
+    with open("/srv/jupyterhub/jupyterhub_config.py", "w") as fw:
         fw.write(jhub_config+"\n")
         for line in addl_config:
             fw.write(line+"\n")
