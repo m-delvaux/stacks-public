@@ -20,7 +20,7 @@ github_config = lambda env_var: [
 ]
 
 def auth0_config(env_var):
-    assert "auth0_subdomain" in env_var.keys(), "Missing 'JHUB_AUTH0_SUBDOMAIN' environment variable'"
+    assert "jhub_auth0_subdomain" in env_var.keys(), "Missing 'JHUB_AUTH0_SUBDOMAIN' environment variable'"
     return [
         f"from oauthenticator.auth0 import Auth0OAuthenticator",
         f"c.Auth0OAuthenticator.auth0_subdomain = '{env_var['jhub_auth0_subdomain']}'",
