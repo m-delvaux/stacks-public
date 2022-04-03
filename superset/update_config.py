@@ -33,7 +33,7 @@ import os
 env_var = {k.lower():v for k, v in dict(os.environ).items() if v!=''}
 
 if("superset_oauth_provider" in env_var.keys()):
-    assert env_var["superset_oauth_provider"].lower() in providers_config.keys(), f"Provider {env_var['superset_oauth_provider']} not supported {', '.join(providers_config.keys())} only"
+    assert env_var["superset_oauth_provider"].lower() in providers_config.keys(), "Provider "+env_var['superset_oauth_provider']+" not supported ("+', '.join(providers_config.keys())+" only"
         
     base_config = open("/git/superset/base_config.py","r").read()
     
