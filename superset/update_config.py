@@ -34,11 +34,8 @@ env_var = {k.lower():v for k, v in dict(os.environ).items() if v!=''}
 
 if("superset_oauth_provider" in env_var.keys()):
     assert env_var["superset_oauth_provider"].lower() in providers_config.keys(), "Provider "+env_var['superset_oauth_provider']+" not supported ("+', '.join(providers_config.keys())+" only"
-        
-    base_config = open("/git/superset/base_config.py","r").read()
     
     addl_config = providers_config[env_var["superset_oauth_provider"].lower()](env_var)
 
-    with open("/git/superset/docker-setup/pythonpath_dev/superset_config.py", "w") as fw:
-        fw.write(base_config+"\n")
+    with open("/git/superset/docker-setup/pythonpath_dev/superset_config_docker.py", "w") as fw:
         fw.write(addl_config+"\n")
