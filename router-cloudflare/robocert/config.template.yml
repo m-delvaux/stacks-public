@@ -1,0 +1,18 @@
+acme:
+  email_account: __EMAIL_ACOUNT__
+profiles:
+- name: cloudflare_profile
+  provider: cloudflare
+  provider_options:
+    auth_username: __CLOUDFLARE_USERNAME__
+    auth_token: __CLOUDFLARE_TOKEN__
+certificates:
+- name: __DOMAIN__ # mdelvaux.com
+  domains:
+  - "*.__DOMAIN__" # subdomains
+  - __DOMAIN__ # main domain
+  profile: cloudflare_profile
+  deploy_hook: "rm -rf /etc/certs/*; cp -Lr /etc/letsencrypt/live/__DOMAIN__/*.pem /etc/certs/"
+  autorestart:
+  - containers:
+    - nginx

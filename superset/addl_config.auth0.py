@@ -31,8 +31,8 @@ OAUTH_PROVIDERS = [
             'request_token_url': None,
             'access_token_url': '/oauth/token',
             'authorize_url': '/authorize',
-            'consumer_key': __CLIENT_ID__,
-            'consumer_secret': __CLIENT_SECRET__,
+            'consumer_key': '__CLIENT_ID__',
+            'consumer_secret': '__CLIENT_SECRET__',
             'access_token_method': 'POST'
         }
     }

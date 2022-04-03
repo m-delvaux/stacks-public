@@ -30,8 +30,8 @@ OAUTH_PROVIDERS = [
             'request_token_url': None,
             'access_token_url': 'https://accounts.google.com/o/oauth2/token',
             'authorize_url': 'https://accounts.google.com/o/oauth2/auth',
-            'consumer_key': __CLIENT_ID__,
-            'consumer_secret': __CLIENT_SECRET__
+            'consumer_key': '__CLIENT_ID__',
+            'consumer_secret': '__CLIENT_SECRET__'
         }
     }
 ]
