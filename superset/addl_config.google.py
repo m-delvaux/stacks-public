@@ -1,17 +1,12 @@
 import os
-
 from flask_appbuilder.security.manager import AUTH_OID, AUTH_REMOTE_USER, AUTH_DB, AUTH_LDAP, AUTH_OAUTH
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-superset_oauth_key = os.getenv('SUPERSET_OAUTH_KEY') or ''
-superset_oauth_secret = os.getenv('SUPERSET_OAUTH_SECRET') or ''
-superset_oauth_whitelist = os.getenv('SUPERSET_OAUTH_WHITELIST') or ''
-
 ROW_LIMIT = 5000
 SUPERSET_WORKERS = 4
 
-SECRET_KEY = 'a long and random secret key'
+SECRET_KEY = '9y76jZCc1eu7g11wQyWxeva5OWRB4j1e5m0zJDcpotKc01spVO54A6C83jcu'
 
 CSRF_ENABLED = True
 
@@ -25,7 +20,6 @@ AUTH_USER_REGISTRATION_ROLE = 'Admin'
 OAUTH_PROVIDERS = [
     {
         'name': 'google',
-        'whitelist': superset_oauth_whitelist.split(','),
         'icon': 'fa-google',
         'token_key': 'access_token',
         'remote_app': {
@@ -36,8 +30,8 @@ OAUTH_PROVIDERS = [
             'request_token_url': None,
             'access_token_url': 'https://accounts.google.com/o/oauth2/token',
             'authorize_url': 'https://accounts.google.com/o/oauth2/auth',
-            'consumer_key': superset_oauth_key,
-            'consumer_secret': superset_oauth_secret
+            'consumer_key': __CLIENT_ID__,
+            'consumer_secret': __CLIENT_SECRET__
         }
     }
 ]
