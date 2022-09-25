@@ -1,3 +1,4 @@
 flask-oauth
 flask_oauthlib
 Authlib
+superset
