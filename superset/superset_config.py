@@ -10,7 +10,7 @@ superset_oauth_secret = os.getenv('GOOGLE_OAUTH_SECRET')
 ROW_LIMIT = 5000
 SUPERSET_WORKERS = 4
 
-SECRET_KEY = 'a long and random secret key'
+SECRET_KEY = 'QPY9U2Eu63D2IRnekEaq3lSQbRHvqDIFq9GXwj3d19no76LN9ukoPa2hTjBN4YJyralnrkwIzrkrz8rD16oIuPRxBjmzzdvvWh3a'
 
 CSRF_ENABLED = True
 
@@ -23,20 +23,20 @@ AUTH_USER_REGISTRATION_ROLE = 'Admin'
 
 OAUTH_PROVIDERS = [
     {
-        'name': 'google',
-        'whitelist': ['*'],
-        'icon': 'fa-google',
-        'token_key': 'access_token',
-        'remote_app': {
-            'base_url': 'https://www.googleapis.com/oauth2/v2/',
-            'request_token_params': {
-                'scope': 'https://www.googleapis.com/auth/userinfo.email'
-            },
-            'request_token_url': None,
-            'access_token_url': 'https://accounts.google.com/o/oauth2/token',
-            'authorize_url': 'https://accounts.google.com/o/oauth2/auth',
-            'consumer_key': superset_oauth_key,
-            'consumer_secret': superset_oauth_secret
+    'name': 'google',
+    'icon': 'fa-google',
+    'token_key': 'access_token',
+    'remote_app': {
+        'api_base_url': 'https://www.googleapis.com/oauth2/v2/',
+        'client_kwargs': {
+            'scope': 'openid email profile'
+        },
+        'request_token_url': None,
+        'access_token_url': 'https://accounts.google.com/o/oauth2/token',
+        'authorize_url': 'https://accounts.google.com/o/oauth2/auth',
+        'client_id': superset_oauth_key,
+        'client_secret': superset_oauth_secret
+        
         }
     }
 ]
