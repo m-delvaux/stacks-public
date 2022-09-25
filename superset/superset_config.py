@@ -24,7 +24,7 @@ AUTH_USER_REGISTRATION_ROLE = 'Admin'
 OAUTH_PROVIDERS = [
     {
         'name': 'google',
-        'whitelist': '*',
+        'whitelist': ['*'],
         'icon': 'fa-google',
         'token_key': 'access_token',
         'remote_app': {
