@@ -11,4 +11,4 @@ engine = create_engine("mysql+pymysql://{user}:{pw}@{host}/{db}"
                               )
                       )
 df = pd.read_csv(file, dtype=str)
-df.to_sql(con=engine, name=name, if_exists='replace')
+df.to_sql(con=engine, name=name, if_exists='replace', index=False)
