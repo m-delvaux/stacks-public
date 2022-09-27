@@ -7,7 +7,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 superset_oauth_key = os.getenv('GOOGLE_OAUTH_KEY')
 superset_oauth_secret = os.getenv('GOOGLE_OAUTH_SECRET')
 
-print(os.env)
+print(os.environ)
 
 ROW_LIMIT = 5000
 SUPERSET_WORKERS = 4
