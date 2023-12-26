@@ -12,7 +12,7 @@ print(os.environ)
 ROW_LIMIT = 5000
 SUPERSET_WORKERS = 4
 
-SECRET_KEY = 'QPY9U2Eu63D2IRnekEaq3lSQbRHvqDIFq9GXwj3d19no76LN9ukoPa2hTjBN4YJyralnrkwIzrkrz8rD16oIuPRxBjmzzdvvWh3a'
+SECRET_KEY = 'RPY9U2Eu63D2IRnekEaq3lSQbRHvqDIFq9GXwj3d19no76LN9ukoPa2hTjBN4YJyralnrkwIzrkrz8rD16oIuPRxBjmzzdvvWh3a'
 
 CSRF_ENABLED = False
 
