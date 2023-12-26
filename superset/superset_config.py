@@ -14,7 +14,7 @@ SUPERSET_WORKERS = 4
 
 SECRET_KEY = 'QPY9U2Eu63D2IRnekEaq3lSQbRHvqDIFq9GXwj3d19no76LN9ukoPa2hTjBN4YJyralnrkwIzrkrz8rD16oIuPRxBjmzzdvvWh3a'
 
-CSRF_ENABLED = True
+CSRF_ENABLED = False
 
 AUTH_TYPE = AUTH_OAUTH
 
@@ -31,7 +31,7 @@ OAUTH_PROVIDERS = [
     'remote_app': {
         'api_base_url': 'https://www.googleapis.com/oauth2/v2/',
         'client_kwargs': {
-            'scope': 'openid email profile'
+            'scope': 'openid'
         },
         'request_token_url': None,
         'access_token_url': 'https://accounts.google.com/o/oauth2/token',
