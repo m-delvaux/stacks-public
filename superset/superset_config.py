@@ -37,7 +37,7 @@ OAUTH_PROVIDERS = [
     'remote_app': {
         'api_base_url': 'https://www.googleapis.com/oauth2/v2/',
         'client_kwargs': {
-            'scope': 'openid'
+            'scope': 'openid email profile'
         },
         'request_token_url': None,
         'access_token_url': 'https://accounts.google.com/o/oauth2/token',
